@@ -4,38 +4,37 @@
 
 struct Object
 {
-	int GetPropertyInt(std::string name);				//номер свойства объекта в нашем списке
+	int GetPropertyInt(std::string name);				//object property number in our list
 	float GetPropertyFloat(std::string name);
 	std::string GetPropertyString(std::string name);
-	std::string name;									//объ€вили переменную name типа string
-	std::string type;									//а здесь переменную type типа string
-	sf::Rect<float> rect;								//тип Rect с нецелыми значени€ми
-	std::map<std::string, std::string> properties;		//создаЄм ассоциатиный массив. ключ - строковый тип, значение - строковый
-	sf::Sprite sprite;									//объ€вили спрайт
+	
+	std::string name;		//declare a variable type "std::string name"
+	std::string type;		//declare a variable type "std::string type"
+	sf::Rect<float> rect;		//type Rect with non-integer values
+	std::map<std::string, std::string> properties;		//create an associative array. key is a string type, value is a string type
+	sf::Sprite sprite;					//declare sprite
 };
-struct Layer				//слои
+struct Layer							//Layeres
 {
-	int opacity;								//непрозрачность сло€
-	std::vector<sf::Sprite> tiles;				//закидываем в вектор тайлы
+	int opacity;						//opacity Layer
+	std::vector<sf::Sprite> tiles;				//put tiles into the vector
 };
-class Level										//главный класс - уровень
+class Level										//Main Class - Level
 {
 public:
-	bool LoadFromFile(std::string filename);					//возвращает false если не получилось загрузить
+	bool LoadFromFile(std::string filename);		//return false if load has be fail
 	Object GetObject(std::string name);
-	std::vector<Object> GetObjects(std::string name);			//выдаем объект в наш уровень
-	std::vector<Object> GetAllObjects();						//выдаем все объекты в наш уровень
-	void Draw(sf::RenderTarget* target);						//рисуем в окно
-	sf::Vector2i GetTileSize();									//получаем размер тайла
+	std::vector<Object> GetObjects(std::string name);	//Get object from level
+	std::vector<Object> GetAllObjects();			//Get all objects from level
+	void Draw(sf::RenderTarget* target);			//Draw 
+	sf::Vector2i GetTileSize();				//Get size tiles
 private:
-	int width, height, tileWidth, tileHeight;					//в tmx файле width height в начале,затем размер тайла
-	int firstTileID;											//получаем айди первого тайла
-	sf::Rect<float> drawingBounds;								//размер части карты которую рисуем
-	sf::Texture tilesetImage;									//текстура карты
-	std::vector<Object> objects;								//массив типа ќбъекты, который мы создали
+	int width, height, tileWidth, tileHeight;		//in TMX File, width height in the beginning, and after size tile
+	int firstTileID;					//get ID first tile
+	sf::Rect<float> drawingBounds;				//tile drawing distance
+	sf::Texture tilesetImage;				//Texture map
+	std::vector<Object> objects;				//Massive type object, which we created
 	std::vector<Layer> layers;
 };
 ///////////////////////////////////////
-
-
 #endif
