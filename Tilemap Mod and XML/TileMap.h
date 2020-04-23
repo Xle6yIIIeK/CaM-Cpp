@@ -1,6 +1,6 @@
 #ifndef LEVEL_H
 #define LEVEL_H
-#include "stdafx.h"
+#include "tinyxml.h"
 
 struct Object
 {
